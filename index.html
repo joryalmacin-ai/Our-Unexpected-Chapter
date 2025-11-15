@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our Journey — Home</title>
+  <meta name="description" content="Our shared journey" />
+  <style>
+    :root{
+      --accent1: #5b6cff; /* cool blue */
+      --accent2: #9b8cff; /* soft purple */
+      --glass: rgba(10,12,20,0.45);
+      --glass-strong: rgba(10,12,20,0.6);
+      --text: #f6f8ff;
+      --muted: rgba(246,248,255,0.85);
+      --radius: 16px;
+      --maxw: 1000px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color:var(--text);
+      background: #000;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    /* background photo */
+    .bg{
+      position:fixed;
+      inset:0;
+      background-image: url('ourphoto.jpg');
+      background-size:cover;
+      background-position:center;
+      filter:brightness(0.55) saturate(1.05);
+      z-index: -2;
+    }
+    /* subtle color gradient overlay */
+    .overlay{
+      position:fixed;
+      inset:0;
+      background: linear-gradient(180deg, rgba(91,108,255,0.12), rgba(155,140,255,0.06));
+      z-index:-1;
+    }
+
+    /* site container */
+    .site{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      padding:20px;
+      gap:20px;
+    }
+
+    /* header / nav */
+    header{
+      width:100%;
+      max-width:var(--maxw);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .logo{
+      width:52px;
+      height:52px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      box-shadow:0 6px 18px rgba(45,50,120,0.35);
+      font-size:18px;
+    }
+    nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:10px;
+      font-size:14px;
+    }
+    nav a:hover{background:var(--glass); color:var(--text)}
+
+    /* responsive hamburger (CSS only) */
+    .menu-toggle{display:none}
+    .hamburger{
+      display:none;
+      width:44px;height:44px;border-radius:10px;
+      align-items:center;justify-content:center;
+      background:var(--glass); border:1px solid rgba(255,255,255,0.04);
+      cursor:pointer;
+    }
+
+    main{
+      width:100%;
+      max-width:var(--maxw);
+      display:flex;
+      gap:24px;
+      padding:32px;
+    }
+    .hero{
+      flex:1;
+      background: linear-gradient(180deg, rgba(10,12,20,0.32), rgba(10,12,20,0.18));
+      padding:28px;
+      border-radius:var(--radius);
+      backdrop-filter: blur(6px) saturate(1.05);
+      box-shadow: 0 10px 40px rgba(4,8,20,0.5);
+    }
+    .hero h1{
+      margin:0 0 6px;
+      font-size:28px;
+      line-height:1.05;
+    }
+    .meta{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:white;
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.08);
+      color:var(--muted);
+    }
+
+    footer{
+      width:100%;
+      max-width:var(--maxw);
+      color:rgba(246,248,255,0.75);
+      padding:18px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:13px;
+    }
+
+    /* small screens */
+    @media (max-width:800px){
+      nav{display:none}
+      .hamburger{display:flex}
+      main{padding:18px}
+      .hero h1{font-size:22px}
+    }
+    /* mobile menu revealed */
+    .menu-toggle:checked + .hamburger + nav{
+      position:fixed;
+      left:14px; right:14px; top:80px;
+      background: var(--glass-strong);
+      display:flex;
+      flex-direction:column;
+      border-radius:14px;
+      padding:10px;
+      gap:6px;
+      z-index:30;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" role="img" aria-label="Background photo of the couple"></div>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <div class="site">
+    <header>
+      <a class="brand" href="index.html">
+        <div class="logo">Us</div>
+        <div>
+          <div style="font-weight:700">Julieto & Jory</div>
+          <div style="font-size:12px;color:var(--muted)">Our shared journey</div>
+        </div>
+      </a>
+
+      <!-- pure-css mobile toggle -->
+      <input class="menu-toggle" id="mToggle" type="checkbox" />
+      <label for="mToggle" class="hamburger" aria-hidden="true">
+        ☰
+      </label>
+
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="introduction.html">Introduction</a>
+        <a href="dedication.html">Dedication</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="story.html">The Story</a>
+        <a href="unsent.html">Unsent Messages</a>
+        <a href="reminders.html">Reminders</a>
+        <a href="realizations.html">Realizations</a>
+        <a href="conclusions.html">Conclusions</a>
+        <a href="vitae.html">Vitae</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="homeTitle">
+        <h1 id="homeTitle">Our Journey — together</h1>
+        <p class="meta">A small space where we keep our memories, messages, reminders, and the chapters of our story.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="story.html">Read Our Story</a>
+          <a class="btn btn-ghost" href="timeline.html">View Timeline</a>
+          <a class="btn btn-ghost" href="vitae.html">Our Vitae</a>
+        </div>
+
+        <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.06)">
+
+        <p style="color:var(--muted);font-size:15px">
+          Tip: use your phone or desktop — layout adapts. To change the background image, replace <code>ourphoto.jpg</code> in this site's folder.
+        </p>
+      </section>
+
+      <aside style="width:320px;max-width:40%">
+        <div style="background:var(--glass);padding:18px;border-radius:14px;backdrop-filter:blur(6px)">
+          <h3 style="margin:0 0 8px">Quick links</h3>
+          <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+            <li><a href="unsent.html" style="color:var(--muted);text-decoration:none">Unsent Messages</a></li>
+            <li><a href="reminders.html" style="color:var(--muted);text-decoration:none">Reminders</a></li>
+            <li><a href="dedication.html" style="color:var(--muted);text-decoration:none">Dedication</a></li>
+            <li><a href="realizations.html" style="color:var(--muted);text-decoration:none">Realizations</a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>Made with ❤️ — Us</div>
+      <div style="opacity:0.85">Last updated: <!-- you can change this manually --> Nov 16, 2025</div>
+    </footer>
+  </div>
+</body>
+</html>

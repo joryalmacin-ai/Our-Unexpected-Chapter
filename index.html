@@ -14,7 +14,6 @@
         }
         body {
             background: linear-gradient(135deg, #89f7fe, #66a6ff);
-            background-image: url ('https://web.facebook.com/messenger_media/?attachment_id=2364362997399711&message_id=mid.%24cAABjBP_1YQugqcS33WaeH91p8P8n&thread_id=100073968773200');
             color: #fff;
             overflow-x: hidden;
         }
@@ -45,14 +44,6 @@
             font-weight: bold;
             color: #fff;
         }
-        nav a {
-            margin-left: 20px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ffdd59;
-        }
 
         /* Hero Section */
         .hero {
@@ -63,6 +54,7 @@
             text-align: center;
             background: url('your-couple-photo.jpg') no-repeat center center/cover;
             position: relative;
+            flex-direction: column;
         }
         .hero::after {
             content: "";
@@ -78,11 +70,31 @@
         }
         .hero h1 {
             font-size: 48px;
-            margin-bottom: 20px;
+            margin: 20px 0 0 0;
         }
         .hero p {
             font-size: 20px;
+            margin-top: 10px;
         }
+        .hero .hero-nav {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+        .hero .hero-nav a {
+            display: inline-block;
+            background: #ffdd59;
+            color: #000;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 50px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .hero .hero-nav a:hover {
+            background: #ffc107;
+            transform: translateY(-3px);
+        }
+
         @keyframes fadeInUp {
             0% {opacity: 0; transform: translateY(50px);}
             100% {opacity: 1; transform: translateY(0);}
@@ -149,8 +161,8 @@
         @media (max-width: 768px) {
             .hero h1 {font-size: 36px;}
             .hero p {font-size: 16px;}
+            .hero .hero-nav a {padding: 10px 20px;}
             header {padding: 15px 20px;}
-            nav a {margin-left: 10px;}
         }
     </style>
 </head>
@@ -163,17 +175,14 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Our Journey Together</h1>
+            <h1>Welcome to Our Journey Together</h1>
             <p>Celebrating love, growth, and every unforgettable moment we share.</p>
-        </div>
-             <nav>
+        <div class="hero-nav">
             <a href="introduction.html">Start Reading</a>
-            </nav>
+        </div>
         </div>
     </section>
 
-
-    
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Jory & Julieto. All Rights Reserved.</p>
